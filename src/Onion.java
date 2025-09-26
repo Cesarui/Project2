@@ -28,19 +28,34 @@ public class Onion {
     }
 
     public Onion(int[] digits) {
-        if (digits.length % 2 == 0) throw new IllegalArgumentException("Array lenght must be odd");
         this.digits = digits;
         this.result = Peel(digits);
 
     }
 
-    public int flip(int number) {
-        if (number == 1) return 0;
-        else return 1;
+    public static void OddOrEven (int[] arr) {
+        if (arr.length % 2 != 0) throw new IllegalArgumentException("Number of digits must be odd!");
+    }
+
+    private int flip(int number) {
+        return 1 - number;
     }
 
     public int[] getResult() {
         return result;
+    }
+
+    public static int[] numIntoArray(int num) {
+        String numString = String.valueOf(num);
+        int[] newArr = new int[numString.length()];
+
+        for (int i = 0; i < numString.length(); i++) {
+            newArr[i] = numString.charAt(i) - '0';
+            if (newArr[i] != 1 && newArr[i] != 0) {
+                throw new IllegalArgumentException("Numbers can only be either 0 or 1");
+            }
+        }
+        return newArr;
     }
 
     @Override
