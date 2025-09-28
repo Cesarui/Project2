@@ -1,19 +1,21 @@
 // Cesar Pimentel & Baheeja Muntasser
 
-import java.util.Scanner;
+import java.io.IOException;
 
 public class Project2 {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        try {
+            System.out.print("Enter an odd-length binary number: ");
+            int[] digits = Onion.readBinaryDigits(System.in);
+            Onion.checkOddLength(digits);
 
-        System.out.println("Type the number you'd like to flip: ");
-        int userNum = scanner.nextInt();
+            Onion onion = new Onion(digits);
+            System.out.println(onion);
 
-        int[] userNumArr = Onion.numIntoArray(userNum);
-
-        Onion onion1 = new Onion(userNumArr);
-
-        System.out.println(onion1);
-
+        } catch (IOException e) {
+            System.out.println("Error reading input: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid input: " + e.getMessage());
+        }
     }
 }
