@@ -12,5 +12,5 @@ Here is an example output from the program:
 
 `Enter an odd-length binary number: 100`
 
-`Flipped: [0, 1, 1]]`
+`Flipped: [0, 1, 1]`
 
